@@ -6,7 +6,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
   <link rel="stylesheet" href="css/animate.css">
@@ -1035,7 +1036,7 @@
     <div class="container">
 
       <!-- Logo -->
-      <a class="navbar-brand" href="index.html" aria-label="Mohamed Irfan M — Home">Mohamed Irfan M</a>
+      <a class="navbar-brand" href="index.html" aria-label="Mohamed Irfan M — Home"></a>
 
       <!-- Hamburger toggle -->
       <button class="navbar-toggler-elegant js-fh5co-nav-toggle fh5co-nav-toggle d-lg-none" id="nav-toggler-btn"
@@ -1293,7 +1294,6 @@
       align-items: center;
       text-align: center;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 204, 0, 0.05);
-      animation: float-up-down 6s ease-in-out infinite;
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
@@ -1301,18 +1301,6 @@
       transform: translateY(-5px);
       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 204, 0, 0.15);
       border-color: rgba(255, 204, 0, 0.3);
-    }
-
-    @keyframes float-up-down {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-12px);
-      }
     }
 
     .ag-avatar-container {
@@ -1378,19 +1366,6 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      animation: float-up-down-delayed 7s ease-in-out infinite;
-    }
-
-    @keyframes float-up-down-delayed {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
     }
 
     /* Info Grid */
@@ -1468,14 +1443,16 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 2.5rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 204, 0, 0.05);
     }
 
     .ag-skills-container:hover {
-      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 204, 0, 0.15);
+      border-color: rgba(255, 204, 0, 0.3);
     }
 
     .ag-section-title {
@@ -1661,14 +1638,6 @@
       margin-bottom: 0.5rem;
     }
 
-    #resume-section .underline {
-      width: 60px;
-      height: 3px;
-      background: #ffcc00;
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
-      margin-bottom: 2rem;
-    }
 
     .resume-wrap {
       background: rgba(10, 15, 25, 0.45) !important;
@@ -1737,6 +1706,7 @@
       color: rgba(255, 255, 255, 0.7) !important;
       font-size: 0.92rem;
       line-height: 1.7;
+      text-align: justify;
     }
 
     .resume-wrap ul {
@@ -1828,6 +1798,7 @@
       font-size: 0.9rem;
       line-height: 1.6;
       margin-top: 0.8rem;
+      text-align: left;
     }
 
     /* ======================================
@@ -2055,7 +2026,7 @@
             <img src="images/irfan2.jpg" class="ag-avatar-img" alt="Mohamed Irfan M">
           </div>
           <h2 class="ag-name">Mohamed Irfan M</h2>
-          <p class="ag-role">Junior Software Developer</p>
+          <p class="ag-role">Junior Software Developer </p>
         </div>
 
         <!-- RIGHT SIDE: Dashboard Content -->
@@ -2063,90 +2034,242 @@
 
 
 
-          <!-- Skills Section -->
+          <!-- Skills Section — Tech Badge Grid (2-col layout) -->
+          <style>
+            /* ── Outer dashboard: align profile card top ── */
+            .ag-dashboard {
+              align-items: flex-start !important;
+            }
+
+            /* ── 2-column category grid ── */
+            .ts-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 1.1rem 1.6rem;
+            }
+
+            /* Span full width for Tools row (has many badges) */
+            .ts-category.ts-full {
+              grid-column: 1 / -1;
+            }
+
+            .ts-category {
+              display: flex;
+              flex-direction: column;
+              gap: 0.45rem;
+            }
+
+            .ts-cat-label {
+              font-size: 0.72rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              text-transform: uppercase;
+              color: #ffcc00;
+              padding-bottom: 0.35rem;
+              border-bottom: 1px solid rgba(255, 204, 0, 0.15);
+              margin-bottom: 0.4rem;
+              display: flex;
+              align-items: center;
+              gap: 0.45rem;
+            }
+
+            .ts-badges {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.4rem;
+            }
+
+            .ts-badge {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.35rem;
+              padding: 0.3rem 0.75rem;
+              border-radius: 6px;
+              font-size: 0.76rem;
+              font-weight: 500;
+              color: #e2e8f0;
+              background: rgba(255, 255, 255, 0.04);
+              border: 1px solid rgba(255, 255, 255, 0.09);
+              backdrop-filter: blur(6px);
+              -webkit-backdrop-filter: blur(6px);
+              transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+              cursor: default;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+              white-space: nowrap;
+            }
+
+            .ts-badge:hover {
+              background: rgba(255, 204, 0, 0.1);
+              border-color: rgba(255, 204, 0, 0.4);
+              color: #ffcc00;
+              transform: translateY(-2px) scale(1.03);
+              box-shadow: 0 4px 14px rgba(255, 204, 0, 0.18);
+            }
+
+            .ts-badge img {
+              width: 15px;
+              height: 15px;
+              object-fit: contain;
+              flex-shrink: 0;
+              filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.12));
+              transition: filter 0.22s ease, transform 0.22s ease;
+            }
+
+            .ts-badge:hover img {
+              filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.5));
+              transform: scale(1.15);
+            }
+
+            /* shrink the container padding so all fits */
+            .ag-skills-container {
+              padding: 1.6rem !important;
+            }
+
+            .ag-section-title {
+              margin-bottom: 1.2rem !important;
+            }
+          </style>
+
           <div class="ag-skills-container">
-            <h3 class="ag-section-title"><span>S K I L L S</span>
+            <h3 class="ag-section-title"><span>T E C H &nbsp; S T A C K</span>
               <div class="ag-divider"></div>
             </h3>
 
-            <div class="ag-skills-list">
-              <!-- SQL -->
-              <div class="ag-skill">
-                <div class="ag-skill-meta">
-                  <span class="ag-skill-name">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                      class="ag-skill-logo" alt="SQL">
-                    SQL
-                  </span>
-                  <span class="ag-skill-pct">50%</span>
-                </div>
-                <div class="ag-progress-bar">
-                  <div class="ag-progress-fill" style="width: 50%;"></div>
-                </div>
-              </div>
+            <div class="ts-grid">
 
-              <!-- Python -->
-              <div class="ag-skill">
-                <div class="ag-skill-meta">
-                  <span class="ag-skill-name">
+              <!-- Languages -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-code"></span> Languages</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                      class="ag-skill-logo" alt="Python">
+                      alt="Python">
                     Python
                   </span>
-                  <span class="ag-skill-pct">68%</span>
-                </div>
-                <div class="ag-progress-bar">
-                  <div class="ag-progress-fill" style="width: 68%;"></div>
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                    SQL
+                  </span>
                 </div>
               </div>
 
-              <!-- HTML -->
-              <div class="ag-skill">
-                <div class="ag-skill-meta">
-                  <span class="ag-skill-name">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-                      class="ag-skill-logo" alt="HTML5">
+              <!-- Database -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-database"></span> Database</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                      alt="PostgreSQL">
+                    PostgreSQL
+                  </span>
+                </div>
+              </div>
+
+              <!-- Frameworks & Libraries -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-gears"></span> Frameworks</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"
+                      style="filter:invert(1);">
+                    Django
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="DRF"
+                      style="filter:invert(1);">
+                    DRF
+                  </span>
+                </div>
+              </div>
+
+              <!-- Web Technologies -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-globe"></span> Web Tech</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
                     HTML
                   </span>
-                  <span class="ag-skill-pct">70%</span>
-                </div>
-                <div class="ag-progress-bar">
-                  <div class="ag-progress-fill" style="width: 70%;"></div>
-                </div>
-              </div>
-
-              <!-- Microsoft Office -->
-              <div class="ag-skill">
-                <div class="ag-skill-meta">
-                  <span class="ag-skill-name">
-                    <img src="https://img.icons8.com/color/48/microsoft-office-2019.png" class="ag-skill-logo"
-                      alt="Microsoft Office">
-                    Microsoft Office
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    CSS
                   </span>
-                  <span class="ag-skill-pct">85%</span>
-                </div>
-                <div class="ag-progress-bar">
-                  <div class="ag-progress-fill" style="width: 85%;"></div>
-                </div>
-              </div>
-
-              <!-- Web Development -->
-              <div class="ag-skill">
-                <div class="ag-skill-meta">
-                  <span class="ag-skill-name">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-                      class="ag-skill-logo" alt="Web Development">
-                    Web Development
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/fluency/48/api.png" alt="REST APIs">
+                    REST APIs
                   </span>
-                  <span class="ag-skill-pct">65%</span>
-                </div>
-                <div class="ag-progress-bar">
-                  <div class="ag-progress-fill" style="width: 65%;"></div>
                 </div>
               </div>
-            </div>
-          </div>
 
+              <!-- API & Integration -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-link"></span> API &amp; Integration</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/color/48/api-settings.png" alt="API Dev">
+                    API Development
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/color/48/api-settings.png" alt="API Integration">
+                    API Integration
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/color/48/lock-2.png" alt="OAuth 2.0">
+                    OAuth 2.0
+                  </span>
+                </div>
+              </div>
+
+              <!-- Async & Performance -->
+              <div class="ts-category">
+                <span class="ts-cat-label"><span class="icon-bolt"></span> Async &amp; Performance</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/color/48/settings--v1.png" alt="Celery">
+                    Celery
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
+                    Redis
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/color/48/speed.png" alt="Async">
+                    Async Task Processing
+                  </span>
+                </div>
+              </div>
+
+              <!-- Tools & Practices — full width -->
+              <div class="ts-category ts-full">
+                <span class="ts-cat-label"><span class="icon-wrench"></span> Tools &amp; Practices</span>
+                <div class="ts-badges">
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                    Git
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                      alt="GitHub" style="filter:invert(1);">
+                    GitHub
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                      alt="Postman">
+                    Postman
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/fluency/48/pull-request.png" alt="Code Review">
+                    Code Review
+                  </span>
+                  <span class="ts-badge">
+                    <img src="https://img.icons8.com/fluency/48/merge-git.png" alt="Pull Request">
+                    Pull Request Workflows
+                  </span>
+                </div>
+              </div>
+
+            </div><!-- /ts-grid -->
+          </div><!-- /ag-skills-container -->
 
 
         </div>
@@ -2157,51 +2280,39 @@
 
 
 
+
   <section class="ftco-section ftco-no-pb" id="resume-section">
     <div class="container">
-      <div class="row justify-content-center pb-5">
-        <div class="col-md-10 heading-section text-center ftco-animate">
-
-        </div>
-      </div>
-
-      <div class="row">
+      <div class="row mb-5 pb-3">
         <h1 class="big-4">Experience</h1>
         <div class="underline"></div>
       </div>
-      <br>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="resume-wrap ftco-animate">
-            <span class="date">May 2025 - Present</span>
+            <span class="date">Jan 2025 – Present</span>
             <h2>Junior Software Developer</h2>
             <span class="position">Cyberheals</span>
-            <p class="mt-4">Responsible for building and maintaining secure, scalable web applications and system
-              services.
+            <p class="mt-4">Building and shipping production-grade RESTful APIs and automation platforms within the
+              Governance, Risk &amp; Compliance (GRC) domain using Python, Django, and Django REST Framework.</p>
             <ul>
-              <li>Developed and deployed features using Python, SQL, and modern JavaScript frameworks.</li>
-              <li>Collaborated on building secure APIs, database schema optimizations, and backend integrations.</li>
-              <li>Conducted unit, integration, and security testing to ensure high software reliability and performance.
+              <li>Engineered and shipped <strong>15+ RESTful APIs</strong> using Python, Django, and DRF to power an
+                enterprise-grade compliance automation platform.</li>
+              <li>Automated OAuth 2.0 and API-key-based integrations across <strong>10+ external platforms</strong>,
+                cutting manual GRC evidence-collection effort by <strong>70%</strong>.</li>
+              <li>Built asynchronous task-processing pipelines with <strong>Celery and Redis</strong>, reducing
+                long-running request latency by up to <strong>80%</strong>.</li>
+              <li>Optimized PostgreSQL database schemas and queries, improving query performance by
+                <strong>40%</strong>.
               </li>
+              <li>Integrated <strong>10+ internal and third-party APIs</strong>, reducing manual data-synchronization
+                effort by over <strong>60%</strong>.</li>
+              <li>Collaborated within an Agile team, contributing <strong>30+ pull requests</strong> and peer code
+                reviews while upholding code quality standards.</li>
+              <li>Strengthened backend reliability through improved error handling and performance tuning, reducing
+                production failures by <strong>35%</strong>.</li>
             </ul>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="resume-wrap ftco-animate">
-            <span class="date">Jan 2025 - Apr 2025</span>
-            <h2>Software Developer Intern</h2>
-            <span class="position">Cyberheals</span>
-            <p class="mt-4">Assisted in frontend styling, responsive design implementations, and basic backend query
-              optimizations.
-            <ul>
-              <li>Created clean, reusable user interface components with HTML, CSS, and JavaScript.</li>
-              <li>Wrote and optimized SQL queries to interact with internal relational databases.</li>
-              <li>Collaborated with senior engineers to troubleshoot system bugs and perform feature enhancements.</li>
-            </ul>
-            </p>
           </div>
         </div>
       </div>
@@ -2209,11 +2320,10 @@
       <br>
       <br>
 
-      <div class="row" id="education-section">
+      <div class="row mb-5 pb-3" id="education-section">
         <h1 class="big-4">Education</h1>
         <div class="underline"></div>
       </div>
-      <br>
 
       <div class="row">
         <div class="col-md-6">
@@ -2261,11 +2371,10 @@
 
   <section class="ftco-section" id="project-section">
     <div class="container">
-      <div class="row">
+      <div class="row mb-5 pb-3">
         <h1 class="big-4">Projects</h1>
         <div class="underline"></div>
       </div>
-      <br>
       <div class="row d-flex">
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry justify-content-end">
@@ -2288,10 +2397,11 @@
 
               <h3 class="heading"><a>HemoHub-A Lifeflow Management</a></h3>
               <p>Developed a robust database schema utilizing SQL databases for secure storage and retrieval of donor
-                and recipient information, blood product inventory, and transfusion records.Implemented rigorous testing
-                procedures to validate system functionality, data accuracy and testing like unit, integration, system,
-                security and performance testing.The successful implementation of this project resulted in significant
-                improvements in blood efficiency, inventory accuracy, and patient safety. </p>
+                and recipient information, blood product inventory, and transfusion records. Implemented rigorous
+                testing
+                procedures to validate system functionality, data accuracy, and testing like unit, integration, system,
+                security, and performance testing. The successful implementation of this project resulted in significant
+                improvements in blood efficiency, inventory accuracy, and patient safety.</p>
             </div>
           </div>
         </div>
@@ -2360,7 +2470,7 @@
 
   <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
     <div class="container">
-      <div class="row">
+      <div class="row mb-5 pb-3">
         <h1 class="big-4">Contact</h1>
         <div class="underline"></div>
       </div>
@@ -2388,10 +2498,10 @@
       <div class="col-md-6 col-lg-3 d-flex ftco-animate">
         <div class="align-self-stretch box p-4 text-center">
           <div class="icon d-flex align-items-center justify-content-center">
-            <span class="icon-globe"></span>
+            <span class="icon-file-pdf-o"></span>
           </div>
           <h3 class="mb-4">Download Resume</h3>
-          <p><a href="#">resumelink</a></p>
+          <p><a href="Mohamed_Irfan_Resume.pdf" download="Mohamed_Irfan_Resume.pdf">Download PDF</a></p>
         </div>
       </div>
 
@@ -2414,27 +2524,6 @@
       </div>
     </div>
   </section>
-
-
-
-
-  <footer class="ftco-footer ftco-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-
-          <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with
-            <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com"
-              target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
