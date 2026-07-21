@@ -1292,6 +1292,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 204, 0, 0.05);
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
@@ -1816,35 +1817,85 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      padding: 2rem !important;
+      border-radius: 20px;
+      padding: 2.5rem 1.5rem !important;
       text-align: center;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .block-18::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 204, 0, 0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .block-18:hover::before {
+      opacity: 1;
     }
 
     .block-18:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 204, 0, 0.2);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 204, 0, 0.1);
+      transform: translateY(-8px);
+      border-color: rgba(255, 204, 0, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 204, 0, 0.15);
+    }
+
+    .block-18 .icon {
+      width: 65px;
+      height: 65px;
+      background: rgba(255, 204, 0, 0.08);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #ffcc00;
+      margin-bottom: 1.5rem;
+      box-shadow: inset 0 0 15px rgba(255, 204, 0, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .block-18:hover .icon {
+      background: rgba(255, 204, 0, 0.15);
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+      transform: scale(1.15) rotate(5deg);
     }
 
     .block-18 .number {
-      font-size: 2.2rem !important;
-      font-weight: 700;
+      font-size: 2.8rem !important;
+      font-weight: 800;
       color: #ffcc00 !important;
-      text-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
-      display: block;
-      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+      display: inline-block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .block-18.has-plus .number::after {
+      content: '+';
     }
 
     .block-18 span {
-      color: rgba(255, 255, 255, 0.6) !important;
-      font-size: 0.82rem !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+      font-size: 0.9rem !important;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       font-weight: 600;
+      display: block;
     }
 
     .ftco-hireme {
@@ -2038,7 +2089,7 @@
           <style>
             /* ── Outer dashboard: align profile card top ── */
             .ag-dashboard {
-              align-items: flex-start !important;
+              align-items: stretch !important;
             }
 
             /* ── 2-column category grid ── */
@@ -2123,6 +2174,10 @@
             /* shrink the container padding so all fits */
             .ag-skills-container {
               padding: 1.6rem !important;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
             }
 
             .ag-section-title {
@@ -2376,7 +2431,7 @@
         <div class="underline"></div>
       </div>
       <div class="row d-flex">
-        <div class="col-md-4 d-flex ftco-animate">
+        <div class="col-md-6 d-flex ftco-animate">
           <div class="blog-entry justify-content-end">
             <a class="block-20 zoom-effect" style="background-image: url('images/Emp_1.jpg');">
             </a>
@@ -2389,7 +2444,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 d-flex ftco-animate">
+        <div class="col-md-6 d-flex ftco-animate">
           <div class="blog-entry justify-content-end">
             <a class="block-20 zoom-effect" style="background-image: url('images/Blood_2.png');">
             </a>
@@ -2414,36 +2469,40 @@
 
   <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
     <div class="container">
-      <div class="row d-md-flex align-items-center">
+      <div class="row d-md-flex align-items-stretch">
         <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-          <div class="block-18">
+          <div class="block-18 has-plus">
+            <div class="icon"><span class="icon-code"></span></div>
             <div class="text">
-              <strong class="number" data-number="5">0</strong>
-              <span>Achievements</span>
+              <strong class="number" data-number="15">0</strong>
+              <span>APIs Built</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 has-plus">
+            <div class="icon"><span class="icon-github"></span></div>
+            <div class="text">
+              <strong class="number" data-number="30">0</strong>
+              <span>Pull Requests</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 has-plus">
+            <div class="icon"><span class="icon-link"></span></div>
+            <div class="text">
+              <strong class="number" data-number="10">0</strong>
+              <span>Integrations</span>
             </div>
           </div>
         </div>
         <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
           <div class="block-18">
-            <div class="text">
-              <strong class="number" data-number="2">0</strong>
-              <span>Projects</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-          <div class="block-18">
-            <div class="text">
-              <strong class="number" data-number="2">0</strong>
-              <span>Experience</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-          <div class="block-18">
+            <div class="icon"><span class="icon-folder"></span></div>
             <div class="text">
               <strong class="number" data-number="3">0</strong>
-              <span>Additional Qualifications</span>
+              <span>Projects</span>
             </div>
           </div>
         </div>
